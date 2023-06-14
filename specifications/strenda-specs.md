@@ -4,10 +4,6 @@ STRENDA stands for "Standards for Reporting Enzymology Data".
 
 STRENDA DB is a storage and search platform supported by the Beilstein-Institut that incorporates the STRENDA Guidelines in a user-friendly, web-based system. If you are an author who is preparing a manuscript containing functional enzymology data, STRENDA DB provides you the means to ensure that your data sets are complete and valid before you submit them as part of a publication to a journal.
 
-Data entered in the STRENDA DB submission form are automatically checked for compliance with the STRENDA Guidelines; users receive warnings informing them when necessary information is missing.
-
-A successful formal compliance is confirmed by the awarding of a STRENDA Registry Number (SRN) and documented in a fact sheet (PDF) containing all input data that can be submitted with the manuscript to the journal. In addition, each dataset is assigned a DOI that allows reference and tracking of the data. The data become publicly available in the database only after the corresponding article has been peer-reviewed and published in a journal.
-
 The STRENDA Commission, comprising an international panel of highly-regarded scientists who have wide-ranging expertise in areas such as biochemistry, enzyme nomenclature, bioinformatics, systems biology, modelling, mechanistic enzymology and theoretical biology, has established standards for data reporting in enzymology research. The aim of these STRENDA Guidelines is to improve the quality of data published in the scientific literature and to enable researchers to compare, evaluate, interpret and reproduce experimental research results published in the literature and databases. A description of the Guidelines is available here.
 
 ## General information
