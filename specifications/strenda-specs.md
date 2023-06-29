@@ -6,6 +6,22 @@ STRENDA DB is a storage and search platform supported by the Beilstein-Institut 
 
 The STRENDA Commission, comprising an international panel of highly-regarded scientists who have wide-ranging expertise in areas such as biochemistry, enzyme nomenclature, bioinformatics, systems biology, modelling, mechanistic enzymology and theoretical biology, has established standards for data reporting in enzymology research. The aim of these STRENDA Guidelines is to improve the quality of data published in the scientific literature and to enable researchers to compare, evaluate, interpret and reproduce experimental research results published in the literature and databases. A description of the Guidelines is available here.
 
+## Root
+
+### Dataset
+
+- manuscript
+  - Type: Manuscript
+  - Description: Manuscript details
+- experiments
+  - Type: Experiment
+  - Description: Experiments that are part of this Dataset
+  - Multiple: True
+- results
+  - Type: Result
+  - Description: Results of this dataset
+  - Multiple: True
+
 ## General information
 
 ### Manuscript
@@ -13,6 +29,7 @@ The STRENDA Commission, comprising an international panel of highly-regarded sci
 - author_names
   - Type: string
   - Description: Names of the authors (last name, first name)
+  - Multiple: True
 - DOI
   - Type: string, integer
   - Description: Digital Object Identifier of the given manuscript
@@ -20,15 +37,22 @@ The STRENDA Commission, comprising an international panel of highly-regarded sci
   - Type: string, integer
   - Description: PubMed identifier of the manuscript
 
-## Experiment
+## Experiment Details
 
 The following objects describe the experiment of interest.
 
-### ExperimentDetails
+### Experiment
 
 - methodology
   - Type: string
   - Description: Free text describing the methodology of the experiment
+- proteins
+  - Type: Protein
+  - Description: Proteins that have been used within this assay
+  - Multiple: True
+- assay_conditions
+  - Type: AssayConditions
+  - Description: Conditions of the assay
 
 ### Protein
 
@@ -56,6 +80,7 @@ The following objects describe the experiment of interest.
 - assay_components
   - Type: string
   - Description: Components of this assay
+  - Multiple: True
 - compound_name
   - Type: string
   - Description: Name of the compound that has been used within this assay
@@ -86,6 +111,18 @@ The following objects describe the experiment of interest.
 ## Results
 
 The following objects descibe the results drawn from the experiment, such as kinetic parameters and inhibition details.
+
+### Result
+
+- kinetic_parameters
+  - Type: KineticParameters
+  - Description: Estimated kinetic parameters
+- inhibition_parameters
+  - Type: InhibitionParameters
+  - Description: Estimated inhibition parameters
+- activation_parameters
+  - Type: ActivationParameters
+  - Description: Estimated activation parameters
 
 ### KineticParameters
 
