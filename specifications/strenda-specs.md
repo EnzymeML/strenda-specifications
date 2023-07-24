@@ -27,7 +27,7 @@ The STRENDA Commission, comprising an international panel of highly-regarded sci
 ### Manuscript
 
 - author_names
-  - Type: string
+  - Type: Author
   - Description: Names of the authors (last name, first name)
   - Multiple: True
 - DOI
@@ -36,6 +36,15 @@ The STRENDA Commission, comprising an international panel of highly-regarded sci
 - PMID
   - Type: string, integer
   - Description: PubMed identifier of the manuscript
+
+### Author
+
+- first_name
+  - Type: string
+  - Description: First name of the author
+- last_name
+  - Type: string
+  - Description: Last name of the author
 
 ## Experiment Details
 
