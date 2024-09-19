@@ -1,10 +1,7 @@
 name: MD-Models Pipeline
 
 on:
-  push:
-    paths:
-      - "specifications/*.md"
-  workflow_dispatch:
+  - push
 
 jobs:
   generate:
