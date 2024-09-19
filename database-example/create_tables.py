@@ -12,4 +12,4 @@ db = DBConnector(
 )
 
 # Create the tables in the database
-db.create_tables("../specifications/STRENDADB_light_20240208.md")
+db.create_tables("../specifications/STRENDADB_light_20240904_fix.md")
