@@ -2,14 +2,20 @@
 
 The following example demonstrates how to set up a PostgreSQL database using Docker and sdRDM-DB. Here we will make use of the `create_tables` functionality to build the necessary tables for the database.
 
+## Docker installation
+
+To install Docker, follow the instructions provided in the [official documentation](https://docs.docker.com/get-docker/).
+
 ## Database setup
 
-This example includes a `docker-compose`recipe to spawn a new instance of a PostgreSQL database. For this, run the following command:
+This example includes a `docker-compose` recipe to spawn a new instance of a PostgreSQL database. For this, run the following command:
 
 ```bash
 mkdir data
-sudo docker-compose up --build
+sudo docker-compose up -d
 ```
+
+_(The `sudo` command may only be necessary for linux dists)_
 
 ## Create tables
 
