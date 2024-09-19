@@ -6,5 +6,4 @@ paths = ["specifications/STRENDADB_light_20240208.md"]
 [generate]
 xml-schema = { out = "schemes/strenda.xsd" }
 json-schema = { out = "schemes/strenda.json", root = "Publication" }
-python-pydantic = { out = "python/strenda/pydantic_models.py" }
 mk-docs = { out = "docs/model.md", nav = "false" }
