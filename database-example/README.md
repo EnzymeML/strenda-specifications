@@ -102,4 +102,4 @@ _Output_
 
 ## Working with the database
 
-In the Jupyter notebook `example.ipynb`, you can find an example of how to interact with the database using the `sdrdm-db` library.
+In the Jupyter notebook `UseDatabase.ipynb`, you can find an example of how to interact with the database using the `sdrdm-db` library.
