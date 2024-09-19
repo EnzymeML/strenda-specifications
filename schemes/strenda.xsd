@@ -26,7 +26,7 @@
             <xs:element name="title" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        title of the publication
+                        Title of the publication
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -469,7 +469,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="database used" type="xs:string">
+            <xs:element name="database_used" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         name of the database
@@ -523,6 +523,13 @@
     <!-- ResultsSet Definition -->
     <xs:complexType name="ResultsSetType">
         <xs:sequence>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Name of the result set
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="initial_kinetics" type="InitialKineticsType">
                 <xs:annotation>
                     <xs:documentation>
@@ -538,11 +545,18 @@
     <!-- InitialKinetics Definition -->
     <xs:complexType name="InitialKineticsType">
         <xs:sequence>
-            <xs:element name="Km" type="ParameterType"/>
+            <xs:element name="placeholder" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        placeholder for the type of kinetics
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="km" type="ParameterType"/>
             <xs:element name="kcat" type="ParameterType"/>
-            <xs:element name="V" type="ParameterType"/>
-            <xs:element name="kcat/Km" type="ParameterType"/>
-            <xs:element name="V/Km" type="ParameterType"/>
+            <xs:element name="v" type="ParameterType"/>
+            <xs:element name="kcat_over_km" type="ParameterType"/>
+            <xs:element name="v_over_km" type="ParameterType"/>
         </xs:sequence>
     </xs:complexType>
 

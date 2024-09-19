@@ -73,7 +73,7 @@ This page provides comprehensive information about the structure and components 
 
 __title__ `string`
 
-- title of the publication
+- Title of the publication
 
 
 __doi__ `string`
@@ -405,7 +405,7 @@ __iupac__ `string`
 - IUPAC name
 
 
-__database used__ `string`
+__database_used__ `string`
 
 - name of the database
 
@@ -445,6 +445,11 @@ __activator__ `string`
 ### ResultsSet
 
 
+__name__ `string`
+
+- Name of the result set
+
+
 __initial_kinetics__ [`InitialKinetics`](#initialkinetics)
 
 - Km, kcat, V, kcat/Km, V/Km
@@ -461,7 +466,12 @@ __inhibition__ [`Inhibition`](#inhibition)
 ### InitialKinetics
 
 
-__Km__ [`Parameter`](#parameter)
+__placeholder__ `string`
+
+- placeholder for the type of kinetics
+
+
+__km__ [`Parameter`](#parameter)
 
 - `Descriptor`: value, SE, unit
 
@@ -469,15 +479,15 @@ __kcat__ [`Parameter`](#parameter)
 
 - `Descriptor`: value, SE, unit
 
-__V__ [`Parameter`](#parameter)
+__v__ [`Parameter`](#parameter)
 
 - `Descriptor`: value, SE, unit
 
-__kcat/Km__ [`Parameter`](#parameter)
+__kcat_over_km__ [`Parameter`](#parameter)
 
 - `Descriptor`: value, SE, unit
 
-__V/Km__ [`Parameter`](#parameter)
+__v_over_km__ [`Parameter`](#parameter)
 
 - `Descriptor`: value, SE, unit
 

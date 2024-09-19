@@ -5,7 +5,7 @@
   "properties": {
     "title": {
       "title": "title",
-      "description": "title of the publication",
+      "description": "Title of the publication",
       "type": "string"
     },
     "doi": {
