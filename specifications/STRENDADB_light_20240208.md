@@ -8,7 +8,7 @@
 
 - title
   - Type: string
-  - Description: title of the publication
+  - Description: Title of the publication
 - doi
   - Type: string
   - Description: identifier of the publication
