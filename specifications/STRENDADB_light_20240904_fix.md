@@ -10,7 +10,7 @@ This is the publication that includes the experimental results of an enzyme kine
 
 - **title**
   - Type: string
-  - Description: title of the publication
+  - Description: Title of the publication
 - doi
   - Type: string
   - Description: identifier of the publication
