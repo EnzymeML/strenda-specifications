@@ -31,7 +31,44 @@
       }
     }
   },
+  "description": "This is the publication that includes the experimental results of an enzyme kinetics characterization.",
   "definitions": {
+    "Experiment": {
+      "title": "Experiment",
+      "type": "object",
+      "properties": {
+        "name_of_experiment": {
+          "title": "name_of_experiment",
+          "description": "name of the experiment, just for internal purposes",
+          "type": "string"
+        },
+        "type_of_assay": {
+          "title": "type_of_assay",
+          "description": "name of the assay",
+          "type": "string"
+        },
+        "direction_of_the_assay": {
+          "title": "direction_of_the_assay",
+          "type": "string"
+        },
+        "definition_of_the_compound_monitored": {
+          "title": "definition_of_the_compound_monitored",
+          "type": "string"
+        },
+        "continuously_monitored": {
+          "title": "continuously_monitored",
+          "description": "selection of the stopping procedure",
+          "type": "string"
+        },
+        "directly_monitored": {
+          "title": "directly_monitored",
+          "type": "string"
+        },
+        "protein_assay": {
+          "$ref": "#/definitions/ProteinDescription"
+        }
+      }
+    },
     "Author": {
       "title": "Author",
       "type": "object",
@@ -55,42 +92,6 @@
           "title": "orcid",
           "description": "ORCID idenfier",
           "type": "string"
-        }
-      }
-    },
-    "Experiment": {
-      "title": "Experiment",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "description": "name of the experiment, just for internal purposes",
-          "type": "string"
-        },
-        "assay_type": {
-          "title": "assay_type",
-          "description": "name of the assay",
-          "type": "string"
-        },
-        "direction_of_assay": {
-          "title": "direction_of_assay",
-          "type": "string"
-        },
-        "compound_monitored": {
-          "title": "compound_monitored",
-          "type": "string"
-        },
-        "continuously_monitored": {
-          "title": "continuously_monitored",
-          "description": "selection of the stopping procedure",
-          "type": "string"
-        },
-        "directly_monitored": {
-          "title": "directly_monitored",
-          "type": "string"
-        },
-        "protein_assay": {
-          "$ref": "#/definitions/ProteinDescription"
         }
       }
     }

@@ -7,16 +7,17 @@
     <xs:element name="Experiment" type="ExperimentType"/>
     <xs:element name="ProteinDescription" type="ProteinDescriptionType"/>
     <xs:element name="ProteinSource" type="ProteinSourceType"/>
-    <xs:element name="Modifications" type="ModificationsType"/>
+    <xs:element name="SequenceModifications" type="SequenceModificationsType"/>
+    <xs:element name="PosttranslationalModifications" type="PosttranslationalModificationsType"/>
     <xs:element name="ProteinReaction" type="ProteinReactionType"/>
     <xs:element name="Dataset" type="DatasetType"/>
     <xs:element name="AssayConditions" type="AssayConditionsType"/>
     <xs:element name="SmallAssayComponents" type="SmallAssayComponentsType"/>
     <xs:element name="MacromolecularComponents" type="MacromolecularComponentsType"/>
     <xs:element name="RoleOfComponent" type="RoleOfComponentType"/>
+    <xs:element name="CompoundClassification" type="CompoundClassificationType"/>
     <xs:element name="ResultsSet" type="ResultsSetType"/>
-    <xs:element name="InitialKinetics" type="InitialKineticsType"/>
-    <xs:element name="Parameter" type="ParameterType"/>
+    <xs:element name="InitialKineticsParameters" type="InitialKineticsParametersType"/>
     <xs:element name="Activation" type="ActivationType"/>
     <xs:element name="Inhibition" type="InhibitionType"/>
 
@@ -98,22 +99,22 @@
     <!-- Experiment Definition -->
     <xs:complexType name="ExperimentType">
         <xs:sequence>
-            <xs:element name="name" type="xs:string">
+            <xs:element name="name_of_experiment" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         name of the experiment, just for internal purposes
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="assay_type" type="xs:string">
+            <xs:element name="type_of_assay" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         name of the assay
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="direction_of_assay" type="xs:string"/>
-            <xs:element name="compound_monitored" type="xs:string"/>
+            <xs:element name="direction_of_the_assay" type="xs:string"/>
+            <xs:element name="definition_of_the_compound_monitored" type="xs:string"/>
             <xs:element name="continuously_monitored" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
@@ -129,25 +130,31 @@
     <!-- ProteinDescription Definition -->
     <xs:complexType name="ProteinDescriptionType">
         <xs:sequence>
-            <xs:element name="uniprotkb_id" type="xs:string">
+            <xs:element name="uniprotkb_ac" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         identifier obtained from UniProtKB
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="name" type="xs:string">
+            <xs:element name="protein_name" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         name of the protein as of UniProtKB
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="sequence" type="xs:string"/>
-            <xs:element name="modifications" type="ModificationsType"/>
-            <xs:element name="source" type="ProteinSourceType"/>
+            <xs:element name="protein_sequence" type="SequenceModificationsType">
+                <xs:annotation>
+                    <xs:documentation>
+                        amino acid sequence as from UniProtKB
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="posttranslational_modifications" type="PosttranslationalModificationsType"/>
+            <xs:element name="protein_source" type="ProteinSourceType"/>
             <xs:element name="reaction" type="ProteinReactionType"/>
-            <xs:element name="characteristics">
+            <xs:element name="protein_characterization">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="Dataset" type="DatasetType" maxOccurs="unbounded"/>
@@ -212,8 +219,8 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Modifications Definition -->
-    <xs:complexType name="ModificationsType">
+    <!-- SequenceModifications Definition -->
+    <xs:complexType name="SequenceModificationsType">
         <xs:sequence>
             <xs:element name="sequence_modification" type="xs:string">
                 <xs:annotation>
@@ -222,14 +229,20 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="type_of_modification" type="xs:string">
+            <xs:element name="specification_of_the_type_of_modification" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        Description of the Types of modifications
+                        Description of the types of modifications
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="determination_ptm" type="xs:string">
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- PosttranslationalModifications Definition -->
+    <xs:complexType name="PosttranslationalModificationsType">
+        <xs:sequence>
+            <xs:element name="determination_of_ptm" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         Phosphorylation, Glycosylation, Acetylation, Hydroxylation, Methylation, Other
@@ -283,12 +296,19 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="result_set">
+            <xs:element name="results_set">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="ResultsSet" type="ResultsSetType" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
+            </xs:element>
+            <xs:element name="doi" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        DOI of the dataset
+                    </xs:documentation>
+                </xs:annotation>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
@@ -296,31 +316,24 @@
     <!-- AssayConditions Definition -->
     <xs:complexType name="AssayConditionsType">
         <xs:sequence>
-            <xs:element name="small_assay_components" type="xs:string"  maxOccurs="unbounded">
+            <xs:element name="small_assay_components" type="SmallAssayComponentsType">
                 <xs:annotation>
                     <xs:documentation>
                         Description of the compound used in the assay
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="macro_molecular_components" type="xs:string"  maxOccurs="unbounded">
+            <xs:element name="macromolecular_components" type="MacromolecularComponentsType">
                 <xs:annotation>
                     <xs:documentation>
                         Description of the macromolecular components
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="protein_concentration" type="xs:float">
+            <xs:element name="concentration_of_the_assayed_protein" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         value with unit
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="protein_concentration_unit" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        unit of the protein concentration
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -407,7 +420,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="pubchem_id" type="xs:string">
+            <xs:element name="pubchem_cid" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         identifier
@@ -420,7 +433,7 @@
     <!-- MacromolecularComponents Definition -->
     <xs:complexType name="MacromolecularComponentsType">
         <xs:sequence>
-            <xs:element name="role" type="xs:string">
+            <xs:element name="role" type="RoleOfComponentType">
                 <xs:annotation>
                     <xs:documentation>
                         role in the assay, i.e. substrate, product, etc.
@@ -520,17 +533,29 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!-- CompoundClassification Definition -->
+    <xs:complexType name="CompoundClassificationType">
+        <xs:sequence>
+            <xs:element name="protein" type="xs:string"/>
+            <xs:element name="carbohydrate" type="xs:string"/>
+            <xs:element name="dna" type="xs:string"/>
+            <xs:element name="rna" type="xs:string"/>
+            <xs:element name="lipid" type="xs:string"/>
+            <xs:element name="other" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <!-- ResultsSet Definition -->
     <xs:complexType name="ResultsSetType">
         <xs:sequence>
             <xs:element name="name" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        Name of the result set
+                        Name of the results set
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="initial_kinetics" type="InitialKineticsType">
+            <xs:element name="initial_kinetic_parameters" type="InitialKineticsParametersType">
                 <xs:annotation>
                     <xs:documentation>
                         Km, kcat, V, kcat/Km, V/Km
@@ -542,48 +567,14 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- InitialKinetics Definition -->
-    <xs:complexType name="InitialKineticsType">
+    <!-- InitialKineticsParameters Definition -->
+    <xs:complexType name="InitialKineticsParametersType">
         <xs:sequence>
-            <xs:element name="placeholder" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        placeholder for the type of kinetics
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="km" type="ParameterType"/>
-            <xs:element name="kcat" type="ParameterType"/>
-            <xs:element name="v" type="ParameterType"/>
-            <xs:element name="kcat_over_km" type="ParameterType"/>
-            <xs:element name="v_over_km" type="ParameterType"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <!-- Parameter Definition -->
-    <xs:complexType name="ParameterType">
-        <xs:sequence>
-            <xs:element name="value" type="xs:float">
-                <xs:annotation>
-                    <xs:documentation>
-                        value of the parameter
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="standard_error" type="xs:float">
-                <xs:annotation>
-                    <xs:documentation>
-                        standard error of the parameter
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="unit" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        unit of the parameter
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
+            <xs:element name="km" type="xs:string"/>
+            <xs:element name="kcat" type="xs:string"/>
+            <xs:element name="v" type="xs:string"/>
+            <xs:element name="kcat_over_km" type="xs:string"/>
+            <xs:element name="v_over_km" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -598,7 +589,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="velocity_max_concentration" type="xs:string">
+            <xs:element name="velocity_at_max_concentration" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         velocity at maximum concentration of activator
@@ -612,17 +603,17 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="influence_km_no_activator" type="xs:string">
+            <xs:element name="incluence_no_activator" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        Value, SE, Unit, true/apparent
+                        Influence on MM kinetics. Schema: Value, SE, Unit, true/apparent
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="influence_max_concentration" type="xs:string">
+            <xs:element name="influence_at_maxconcentration" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        Value, SE, Unit, true/apparent
+                        Influence on MM kinetics. Schema: Value, SE, Unit, true/apparent
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -632,10 +623,10 @@
     <!-- Inhibition Definition -->
     <xs:complexType name="InhibitionType">
         <xs:sequence>
-            <xs:element name="reversibility" type="xs:string">
+            <xs:element name="reversibility_yes" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        competitive, uncompetitive, mixed, kic, SE, Unit, Math function
+                        inhbition type - competitive, uncompetitive, mixed, kic, SE, Unit, Math function
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>

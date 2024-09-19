@@ -15,51 +15,52 @@ This page provides comprehensive information about the structure and components 
         experiment(Experiment)
         proteindescription(ProteinDescription)
         proteinsource(ProteinSource)
-        modifications(Modifications)
+        sequencemodifications(SequenceModifications)
+        posttranslationalmodifications(PosttranslationalModifications)
         proteinreaction(ProteinReaction)
         dataset(Dataset)
         assayconditions(AssayConditions)
         smallassaycomponents(SmallAssayComponents)
         macromolecularcomponents(MacromolecularComponents)
         roleofcomponent(RoleOfComponent)
+        compoundclassification(CompoundClassification)
         resultsset(ResultsSet)
-        initialkinetics(InitialKinetics)
-        parameter(Parameter)
+        initialkineticsparameters(InitialKineticsParameters)
         activation(Activation)
         inhibition(Inhibition)
         publication(Publication) --> author(Author)
         publication(Publication) --> experiment(Experiment)
         experiment(Experiment) --> proteindescription(ProteinDescription)
-        proteindescription(ProteinDescription) --> modifications(Modifications)
+        proteindescription(ProteinDescription) --> sequencemodifications(SequenceModifications)
+        proteindescription(ProteinDescription) --> posttranslationalmodifications(PosttranslationalModifications)
         proteindescription(ProteinDescription) --> proteinsource(ProteinSource)
         proteindescription(ProteinDescription) --> proteinreaction(ProteinReaction)
         proteindescription(ProteinDescription) --> dataset(Dataset)
         dataset(Dataset) --> assayconditions(AssayConditions)
         dataset(Dataset) --> resultsset(ResultsSet)
-        resultsset(ResultsSet) --> initialkinetics(InitialKinetics)
+        assayconditions(AssayConditions) --> smallassaycomponents(SmallAssayComponents)
+        assayconditions(AssayConditions) --> macromolecularcomponents(MacromolecularComponents)
+        macromolecularcomponents(MacromolecularComponents) --> roleofcomponent(RoleOfComponent)
+        resultsset(ResultsSet) --> initialkineticsparameters(InitialKineticsParameters)
         resultsset(ResultsSet) --> activation(Activation)
         resultsset(ResultsSet) --> inhibition(Inhibition)
-        initialkinetics(InitialKinetics) --> parameter(Parameter)
-        initialkinetics(InitialKinetics) --> parameter(Parameter)
-        initialkinetics(InitialKinetics) --> parameter(Parameter)
-        initialkinetics(InitialKinetics) --> parameter(Parameter)
-        initialkinetics(InitialKinetics) --> parameter(Parameter)
 
         click publication "#publication" "Go to Publication"
         click author "#author" "Go to Author"
         click experiment "#experiment" "Go to Experiment"
         click proteindescription "#proteindescription" "Go to ProteinDescription"
         click proteinsource "#proteinsource" "Go to ProteinSource"
-        click modifications "#modifications" "Go to Modifications"
+        click sequencemodifications "#sequencemodifications" "Go to SequenceModifications"
+        click posttranslationalmodifications "#posttranslationalmodifications" "Go to PosttranslationalModifications"
         click proteinreaction "#proteinreaction" "Go to ProteinReaction"
         click dataset "#dataset" "Go to Dataset"
         click assayconditions "#assayconditions" "Go to AssayConditions"
         click smallassaycomponents "#smallassaycomponents" "Go to SmallAssayComponents"
         click macromolecularcomponents "#macromolecularcomponents" "Go to MacromolecularComponents"
         click roleofcomponent "#roleofcomponent" "Go to RoleOfComponent"
+        click compoundclassification "#compoundclassification" "Go to CompoundClassification"
         click resultsset "#resultsset" "Go to ResultsSet"
-        click initialkinetics "#initialkinetics" "Go to InitialKinetics"
-        click parameter "#parameter" "Go to Parameter"
+        click initialkineticsparameters "#initialkineticsparameters" "Go to InitialKineticsParameters"
         click activation "#activation" "Go to Activation"
         click inhibition "#inhibition" "Go to Inhibition"
     ```
@@ -69,9 +70,9 @@ This page provides comprehensive information about the structure and components 
 
 
 ### Publication
+This is the publication that includes the experimental results of an enzyme kinetics characterization.
 
-
-__title__ `string`
+__title__* `string`
 
 - Title of the publication
 
@@ -97,7 +98,7 @@ __experiment__ [`list[Experiment]`](#experiment)
 ### Author
 
 
-__name__ `string`
+__name__* `string`
 
 - name of the author. Nomenclature: Family name initials first name
 
@@ -122,20 +123,20 @@ __orcid__ `string`
 ### Experiment
 
 
-__name__ `string`
+__name_of_experiment__ `string`
 
 - name of the experiment, just for internal purposes
 
 
-__assay_type__ `string`
+__type_of_assay__ `string`
 
 - name of the assay
 
 
-__direction_of_assay__ `string`
+__direction_of_the_assay__ `string`
 
 
-__compound_monitored__ `string`
+__definition_of_the_compound_monitored__ `string`
 
 
 __continuously_monitored__ `string`
@@ -154,29 +155,31 @@ __protein_assay__ [`ProteinDescription`](#proteindescription)
 ### ProteinDescription
 
 
-__uniprotkb_id__ `string`
+__uniprotkb_ac__ `string`
 
 - identifier obtained from UniProtKB
 
 
-__name__ `string`
+__protein_name__ `string`
 
 - name of the protein as of UniProtKB
 
 
-__sequence__ `string`
+__protein_sequence__ [`SequenceModifications`](#sequencemodifications)
+
+- amino acid sequence as from UniProtKB
 
 
-__modifications__ [`Modifications`](#modifications)
+__posttranslational_modifications__ [`PosttranslationalModifications`](#posttranslationalmodifications)
 
 
-__source__ [`ProteinSource`](#proteinsource)
+__protein_source__ [`ProteinSource`](#proteinsource)
 
 
 __reaction__ [`ProteinReaction`](#proteinreaction)
 
 
-__characteristics__ [`list[Dataset]`](#dataset)
+__protein_characterization__ [`list[Dataset]`](#dataset)
 
 
 ------
@@ -221,7 +224,7 @@ __localization__ `string`
 
 ------
 
-### Modifications
+### SequenceModifications
 
 
 __sequence_modification__ `string`
@@ -229,12 +232,17 @@ __sequence_modification__ `string`
 - modified amino acid sequence
 
 
-__type_of_modification__ `string`
+__specification_of_the_type_of_modification__ `string`
 
-- Description of the Types of modifications
+- Description of the types of modifications
 
 
-__determination_ptm__ `string`
+------
+
+### PosttranslationalModifications
+
+
+__determination_of_ptm__ `string`
 
 - Phosphorylation, Glycosylation, Acetylation, Hydroxylation, Methylation, Other
 
@@ -272,7 +280,12 @@ __name__ `string`
 __assay_conditions__ [`list[AssayConditions]`](#assayconditions)
 
 
-__result_set__ [`list[ResultsSet]`](#resultsset)
+__results_set__ [`list[ResultsSet]`](#resultsset)
+
+
+__doi__ `string`
+
+- DOI of the dataset
 
 
 ------
@@ -280,24 +293,19 @@ __result_set__ [`list[ResultsSet]`](#resultsset)
 ### AssayConditions
 
 
-__small_assay_components__ `list[string]`
+__small_assay_components__ [`SmallAssayComponents`](#smallassaycomponents)
 
 - Description of the compound used in the assay
 
 
-__macro_molecular_components__ `list[string]`
+__macromolecular_components__ [`MacromolecularComponents`](#macromolecularcomponents)
 
 - Description of the macromolecular components
 
 
-__protein_concentration__ `float`
+__concentration_of_the_assayed_protein__ `string`
 
 - value with unit
-
-
-__protein_concentration_unit__ `string`
-
-- unit of the protein concentration
 
 
 __description_of_concentration_measurement__ `string`
@@ -360,7 +368,7 @@ __chebi_id__ `string`
 - identifier
 
 
-__pubchem_id__ `string`
+__pubchem_cid__ `string`
 
 - identifier
 
@@ -370,7 +378,7 @@ __pubchem_id__ `string`
 ### MacromolecularComponents
 
 
-__role__ `string`
+__role__ [`RoleOfComponent`](#roleofcomponent)
 
 - role in the assay, i.e. substrate, product, etc.
 
@@ -442,15 +450,38 @@ __activator__ `string`
 
 ------
 
+### CompoundClassification
+
+
+__protein__ `string`
+
+
+__carbohydrate__ `string`
+
+
+__dna__ `string`
+
+
+__rna__ `string`
+
+
+__lipid__ `string`
+
+
+__other__ `string`
+
+
+------
+
 ### ResultsSet
 
 
 __name__ `string`
 
-- Name of the result set
+- Name of the results set
 
 
-__initial_kinetics__ [`InitialKinetics`](#initialkinetics)
+__initial_kinetic_parameters__ [`InitialKineticsParameters`](#initialkineticsparameters)
 
 - Km, kcat, V, kcat/Km, V/Km
 
@@ -463,53 +494,28 @@ __inhibition__ [`Inhibition`](#inhibition)
 
 ------
 
-### InitialKinetics
+### InitialKineticsParameters
 
 
-__placeholder__ `string`
-
-- placeholder for the type of kinetics
-
-
-__km__ [`Parameter`](#parameter)
+__km__ `string`
 
 - `Descriptor`: value, SE, unit
 
-__kcat__ [`Parameter`](#parameter)
+__kcat__ `string`
 
 - `Descriptor`: value, SE, unit
 
-__v__ [`Parameter`](#parameter)
+__v__ `string`
 
 - `Descriptor`: value, SE, unit
 
-__kcat_over_km__ [`Parameter`](#parameter)
+__kcat_over_km__ `string`
 
 - `Descriptor`: value, SE, unit
 
-__v_over_km__ [`Parameter`](#parameter)
+__v_over_km__ `string`
 
 - `Descriptor`: value, SE, unit
-
-------
-
-### Parameter
-
-
-__value__ `float`
-
-- value of the parameter
-
-
-__standard_error__ `float`
-
-- standard error of the parameter
-
-
-__unit__ `string`
-
-- unit of the parameter
-
 
 ------
 
@@ -525,7 +531,7 @@ __velocity_no_activator__ `string`
 - velocity without activator
 
 
-__velocity_max_concentration__ `string`
+__velocity_at_max_concentration__ `string`
 
 - velocity at maximum concentration of activator
 
@@ -535,14 +541,14 @@ __saturation__ `string`
 - statement whether the concentration was saturating or not
 
 
-__influence_km_no_activator__ `string`
+__incluence_no_activator__ `string`
 
-- Value, SE, Unit, true/apparent
+- Influence on MM kinetics. Schema: Value, SE, Unit, true/apparent
 
 
-__influence_max_concentration__ `string`
+__influence_at_maxconcentration__ `string`
 
-- Value, SE, Unit, true/apparent
+- Influence on MM kinetics. Schema: Value, SE, Unit, true/apparent
 
 
 ------
@@ -550,9 +556,9 @@ __influence_max_concentration__ `string`
 ### Inhibition
 
 
-__reversibility__ `string`
+__reversibility_yes__ `string`
 
-- competitive, uncompetitive, mixed, kic, SE, Unit, Math function
+- inhbition type - competitive, uncompetitive, mixed, kic, SE, Unit, Math function
 
 
 __reversibility_no__ `string`
