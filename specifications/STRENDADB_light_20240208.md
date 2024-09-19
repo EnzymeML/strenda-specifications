@@ -6,304 +6,306 @@
 
 ### Publication
 
-* Title
-  * type: string
-  * description: title of the publication
-* DOI
-  * type: string
-  * description: identifier of the publication
-* PMID
-  * type: string
-  * description: identifier of the publication as indexed in PubMed
-* Author
-  * type: Author
-  * Multiple: true
-* Experiment
-  * type: Experiment
-  * Multiple: true
+- title
+  - Type: string
+  - Description: title of the publication
+- doi
+  - Type: string
+  - Description: identifier of the publication
+- pmid
+  - Type: string
+  - Description: identifier of the publication as indexed in PubMed
+- author
+  - Type: Author
+  - Multiple: true
+- experiment
+  - Type: Experiment
+  - Multiple: true
 
 ### Author
 
-* Name
-  * type: string
-  * description: name of the author. Nomenclature: Family name initials first name
-* Affiliation
-  * type: string
-  * description: name of organizaton, department, city, country
-* Email
-  * type: string
-  * description: email address
-* ORCID
-  * type: string
-  * description: ORCID idenfier
+- name
+  - Type: string
+  - Description: name of the author. Nomenclature: Family name initials first name
+- affiliation
+  - Type: string
+  - Description: name of organizaton, department, city, country
+- email
+  - Type: string
+  - Description: email address
+- orcid
+  - Type: string
+  - Description: ORCID idenfier
 
-## Protein Data
+## ProteinData
 
 ### Experiment
 
-* Name of Experiment
-  * type: string
-  * description: name of the experiment, just for internal purposes
-* Type of Assay
-  * type: string
-  * description: name of the assay
-* Direction of the Assay
-  * type: string
-  * description:
-* Definition of the compound monitored
-  * type: string
-  * description:
-* Continuously monitored
-  * type: string
-  * description: selection of the stopping procedure
-  * type: string
-  * description: other
-  * type: string
-* Directly monitored
-  * type: string
-* Protein Assay
-  * type: Protein Description
-  * Multiple: false
+- name
+  - Type: string
+  - Description: name of the experiment, just for internal purposes
+- assay_type
+  - Type: string
+  - Description: name of the assay
+- direction_of_assay
+  - Type: string
+  - Description:
+- compound_monitored
+  - Type: string
+  - Description:
+- continuously_monitored
+  - Type: string
+  - Description: selection of the stopping procedure
+- directly_monitored
+  - Type: string
+- protein_assay
+  - Type: ProteinDescription
 
-### Protein Description
+### ProteinDescription
 
-* UniProtKB AC
-  * type: string
-  * description: identifier obtained from UniProtKB
-* Protein name
-  * type: string
-  * description: name of the protein as of UniProtKB
-* Protein Sequence
-  * type: Sequence
-* Modifications
-  * type: Modifications
-* Protein Source
-  * type: Protein Source
-* Reaction
-  * type: Protein reaction
-* Protein characterization
-  * type: Dataset
-  * Multiple: true
+- uniprotkb_id
+  - Type: string
+  - Description: identifier obtained from UniProtKB
+- name
+  - Type: string
+  - Description: name of the protein as of UniProtKB
+- sequence
+  - Type: string
+- modifications
+  - Type: Modifications
+- source
+  - Type: ProteinSource
+- reaction
+  - Type: ProteinReaction
+- characteristics
+  - Type: Dataset
+  - Multiple: true
 
-### Protein Source
+### ProteinSource
 
-* Expression system
-  * type: string
-  * description: description of expression system if heterologously expressed
-* Organism
-  * type: string
-  * description: as in UniProtKB provided, name of organism
-* Taxon ID
-  * type: string
-  * description: ID as obtained from NCBI Taxonomy
-* Strain
-  * type: string
-  * description: name or identifier of the strain
-* Cell Type
-  * type: string
-  * description: determination of the cell in which the protein is expressed
-* Tissue
-  * type: string
-  * description: determination of the tissue, ideally BTO is used
-* Localization
-  * type: string
-  * description: determination of the localization (membran, cytosol, etc.)
-
-### Sequence
-
-* Protein sequence
-  * type: string
-  * description: amino acid sequence as from UniProtKB
+- expression_system
+  - Type: string
+  - Description: Description of expression system if heterologously expressed
+- organism
+  - Type: string
+  - Description: as in UniProtKB provided, name of organism
+- taxon_id
+  - Type: string
+  - Description: ID as obtained from NCBI Taxonomy
+- strain
+  - Type: string
+  - Description: name or identifier of the strain
+- cell_type
+  - Type: string
+  - Description: determination of the cell in which the protein is expressed
+- tissue
+  - Type: string
+  - Description: determination of the tissue, ideally BTO is used
+- localization
+  - Type: string
+  - Description: determination of the localization (membran, cytosol, etc.)
 
 ### Modifications
 
-* Sequence modification
-  * type: string
-  * description: modified amino acid sequence
-* Specification of the type of modification
-  * type: string
-  * description: description of the types of modifications
-* Determination of PTM
-  * type: string
-  * description: Phosphorylation, Glycosylation, Acetylation, Hydroxylation, Methylation, Other
+- sequence_modification
+  - Type: string
+  - Description: modified amino acid sequence
+- type_of_modification
+  - Type: string
+  - Description: Description of the Types of modifications
+- determination_ptm
+  - Type: string
+  - Description: Phosphorylation, Glycosylation, Acetylation, Hydroxylation, Methylation, Other
 
-### Protein reaction
+### ProteinReaction
 
-* EC number
-  * type: string
-  * description: EC number obtained from ExplorEnz
-* Reaction as in ExplorEnz
-  * type: string
-  * description: reaction as described in ExplorEnz
-* Comment
-  * type: string
-  * description: comment on the protein reaction if not properly described in ExplorEnz
+- ec_number
+  - Type: string
+  - Description: EC number obtained from ExplorEnz
+- reaction_as_in_explorenz
+  - Type: string
+  - Description: reaction as described in ExplorEnz
+- comment
+  - Type: string
+  - Description: comment on the protein reaction if not properly described in ExplorEnz
 
 ### Dataset
 
-* Name
-  * type: string
-  * description: name of the dataset
-* Assay conditions
-  * type: Assay conditions
-  * Multiple: true
-* Results Set
-  * type: Results Set
-  * Multiple: true
+- name
+  - Type: string
+  - Description: name of the dataset
+- assay_conditions
+  - Type: AssayConditions
+  - Multiple: true
+- result_set
+  - Type: ResultsSet
+  - Multiple: true
 
-### Assay conditions
+### AssayConditions
 
-* Small Assay Components
-  * type: Small Assay Components
-  * description: description of the compound used in the assay
-* Macromolecular Components
-  * type: Macromolecular Components
-  * description: description of the macromolecular components
-* Concentration of the assayed protein
-  * type: string
-  * description: value with unit
-* Description of concentration measurement
-  * type: string
-  * description: free text field
-* pH
-  * type: string
-  * description: value and unit
-* pD
-  * type: string
-  * description: value and unit
-* Temperature
-  * type: string
-  * description: value and unit, K and Celsius
+- small_assay_components
+  - Type: string[]
+  - Description: Description of the compound used in the assay
+- macro_molecular_components
+  - Type: string[]
+  - Description: Description of the macromolecular components
+- protein_concentration
+  - Type: float
+  - Description: value with unit
+- protein_concentration_unit
+  - Type: string
+  - Description: unit of the protein concentration
+- description_of_concentration_measurement
+  - Type: string
+  - Description: free text field
+- ph
+  - Type: string
+  - Description: value and unit
+- pd
+  - Type: string
+  - Description: value and unit
+- temperature
+  - Type: string
+  - Description: value and unit, K and Celsius
 
-### Small Assay Components
+### SmallAssayComponents
 
-* Role
-  * type: Role of Component
-  * description: role in the assay, i.e. substrate, product, etc.
-* Initial concentration - fixed
-  * type: string
-  * description: unit, value
-* Initial concentration - varied
-  * type: string
-  * description: concentration range, value, unit
-* Compound name
-  * type: string
-  * description: name as obtained from PubChem
-* InChi
-  * type: string
-  * description: InChi string
-* IUPAC
-  * type: string
-  * description: IUPAC name
-* ChEBI ID
-  * type: string
-  * description: identifier
-* PubChem CID
-  * type: string
-  * description: identifier
+- role
+  - Type: string
+  - Description: role in the assay, i.e. substrate, product, etc.
+- initial_concentration_fixed
+  - Type: string
+  - Description: unit, value
+- initial_concentration_varied
+  - Type: string
+  - Description: concentration range, value, unit
+- compound_name
+  - Type: string
+  - Description: name as obtained from PubChem
+- inchi
+  - Type: string
+  - Description: InChi string
+- iupac
+  - Type: string
+  - Description: IUPAC name
+- chebi_id
+  - Type: string
+  - Description: identifier
+- pubchem_id
+  - Type: string
+  - Description: identifier
 
-### Macromolecular Components
+### MacromolecularComponents
 
-* Role
-  * type: string
-  * description: role in the assay, i.e. substrate, product, etc.
-* Initial concentration - fixed
-  * type: string
-  * description: unit, value
-* Initial concentration - varied
-  * type: string
-  * description: concentration range, value, unit
-* Class
-  * type: string
-  * description: protein, carbohydrate, DNA, RNA, etc.
-* Compound name
-  * type: string
-  * description: name as obtained from PubChem
-* InChi
-  * type: string
-  * description: InChi string
-* IUPAC
-  * type: string
-  * description: IUPAC name
-* Database used
-  * type: string
-  * description: name of the database
-* Identifier
-  * type: string
-  * description: identifier
+- role
+  - Type: string
+  - Description: role in the assay, i.e. substrate, product, etc.
+- initial_concentration_fixed
+  - Type: string
+  - Description: unit, value
+- initial_concentration_varied
+  - Type: string
+  - Description: concentration range, value, unit
+- classification
+  - Type: string
+  - Description: protein, carbohydrate, DNA, RNA, etc.
+- compound_name
+  - Type: string
+  - Description: name as obtained from PubChem
+- inchi
+  - Type: string
+  - Description: InChi string
+- iupac
+  - Type: string
+  - Description: IUPAC name
+- database used
+  - Type: string
+  - Description: name of the database
+- identifier
+  - Type: string
+  - Description: identifier
 
-### Role of Component
+### RoleOfComponent
 
-* Substrate
-  * type: string
-  * description: substrate of chemical reaction
-* Product
-  * type: string
-  * description: production of chemical reaction
-* Inhibitor
-  * type: string
-  * description: component that inhibits the chemical reaction
-* Activator
-  * type: string
-  * description: component that activates/enhances the chemical reaction
+- substrate
+  - Type: string
+  - Description: substrate of chemical reaction
+- product
+  - Type: string
+  - Description: production of chemical reaction
+- inhibitor
+  - Type: string
+  - Description: component that inhibits the chemical reaction
+- activator
+  - Type: string
+  - Description: component that activates/enhances the chemical reaction
 
-### Results Set
+### ResultsSet
 
-* Initial Kinetic Parameters
-  * type: Initial Kinetics
-  * description: Km, kcat, V, kcat/Km, V/Km
-* Activation
-  * type: Activation
-* Inhibition
-  * type: Inhibition
-  *
+- initial_kinetics
+  - Type: InitialKinetics
+  - Description: Km, kcat, V, kcat/Km, V/Km
+- activation
+  - Type: Activation
+- inhibition
+  - Type: Inhibition
 
-### Initial Kinetics
+### InitialKinetics
 
-* Km
-  * type: string
-  * descriptor: value, SE, unit
-* kcat
-  * type: string
-  * descriptor: value, SE, unit
-* V
-  * type: string
-  * descriptor: value, SE, unit
-* kcat/Km
-  * type: string
-  * descriptor: value, SE, unit
-* V/Km
-  * type: string
-  * descriptor: value, SE, unit
+- Km
+  - Type: Parameter
+  - descriptor: value, SE, unit
+- kcat
+  - Type: Parameter
+  - descriptor: value, SE, unit
+- V
+  - Type: Parameter
+  - descriptor: value, SE, unit
+- kcat/Km
+  - Type: Parameter
+  - descriptor: value, SE, unit
+- V/Km
+  - Type: Parameter
+  - descriptor: value, SE, unit
+
+### Parameter
+
+- value
+  - Type: float
+  - Description: value of the parameter
+- standard_error
+  - Type: float
+  - Description: standard error of the parameter
+- unit
+  - Type: string
+  - Description: unit of the parameter
 
 ### Activation
 
-* Affinity constant
-  * type: string
-  * descriptor: value, SE, unit, true or apparent
-* Reaction velocity
-* no activator
-  * type: string
-  * description: velocity without activator
-* at max. concentration
-  * type: string
-  * description: velocity at maximum concentration of activator
-* Saturation
-  * type: string
-  * description: statement whether the concentration was saturating or not
-* Influence on substrate MM kinetics
-  * Km no activator
-    * type: string
-    * description: Value, SE, Unit, true/apparent
-  * at max. concentration
-    * type: string
-    * description: Value, SE, Unit, true/apparent
+- affinity_constant
+  - Type: string
+  - descriptor: value, SE, unit, true or apparent
+- velocity_no_activator
+  - Type: string
+  - Description: velocity without activator
+- velocity_max_concentration
+  - Type: string
+  - Description: velocity at maximum concentration of activator
+- saturation
+  - Type: string
+  - Description: statement whether the concentration was saturating or not
+- influence_km_no_activator
+  - Type: string
+  - Description: Value, SE, Unit, true/apparent
+- influence_max_concentration
+  - Type: string
+  - Description: Value, SE, Unit, true/apparent
 
 ### Inhibition
 
-* Reversibility\_yes
-  * type: string
-  * description: competitive, uncompetitive, mixed, kic, SE, Unit, Math function
-* Reversibility\_no
-  * type: string
-  * description: ki, SE, Unit, Comment
+- reversibility
+  - Type: string
+  - Description: competitive, uncompetitive, mixed, kic, SE, Unit, Math function
+- reversibility_no
+  - Type: string
+  - Description: ki, SE, Unit, Comment
