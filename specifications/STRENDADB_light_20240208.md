@@ -16,11 +16,9 @@
   - Type: string
   - Description: identifier of the publication as indexed in PubMed
 - author
-  - Type: Author
-  - Multiple: true
+  - Type: Author[]
 - experiment
-  - Type: Experiment
-  - Multiple: true
+  - Type: Experiment[]
 
 ### Author
 
@@ -78,8 +76,7 @@
 - reaction
   - Type: ProteinReaction
 - characteristics
-  - Type: Dataset
-  - Multiple: true
+  - Type: Dataset[]
 
 ### ProteinSource
 
@@ -135,11 +132,9 @@
   - Type: string
   - Description: name of the dataset
 - assay_conditions
-  - Type: AssayConditions
-  - Multiple: true
+  - Type: AssayConditions[]
 - result_set
-  - Type: ResultsSet
-  - Multiple: true
+  - Type: ResultsSet[]
 
 ### AssayConditions
 
@@ -218,7 +213,7 @@
 - iupac
   - Type: string
   - Description: IUPAC name
-- database used
+- database_used
   - Type: string
   - Description: name of the database
 - identifier
@@ -242,6 +237,9 @@
 
 ### ResultsSet
 
+- name
+  - Type: string
+  - Description: Name of the result set
 - initial_kinetics
   - Type: InitialKinetics
   - Description: Km, kcat, V, kcat/Km, V/Km
@@ -252,19 +250,22 @@
 
 ### InitialKinetics
 
-- Km
+- placeholder
+  - Type: string
+  - Description: placeholder for the type of kinetics
+- km
   - Type: Parameter
   - descriptor: value, SE, unit
 - kcat
   - Type: Parameter
   - descriptor: value, SE, unit
-- V
+- v
   - Type: Parameter
   - descriptor: value, SE, unit
-- kcat/Km
+- kcat_over_km
   - Type: Parameter
   - descriptor: value, SE, unit
-- V/Km
+- v_over_km
   - Type: Parameter
   - descriptor: value, SE, unit
 
