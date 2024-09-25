@@ -1,0 +1,9 @@
+[meta]
+name = "STRENDA-DB"
+description = "This is a code and schema generator for Strenda Biocatalysis."
+paths = ["specifications/STRENDADB_light_20240904_fix.md"]
+
+[generate]
+xml-schema = { out = "schemes/strenda.xsd" }
+json-schema = { out = "schemes/strenda.json", root = "Publication" }
+mk-docs = { out = "docs/model.md", nav = "false" }
